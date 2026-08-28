@@ -151,20 +151,20 @@ $canonicalPath = $canonicalPath ?? '/';
               <?php foreach ($cityGuideGroups as $group): ?>
                 <div class="nav-megamenu-col">
                   <a class="col-heading" href="<?= htmlspecialchars($group['cityHref']) ?>"><?= htmlspecialchars($group['city']) ?></a>
-                  <ul>
+                  <div class="nav-megamenu-links">
                     <?php foreach ($group['neighborhoods'] as $n): ?>
-                      <li><a href="<?= htmlspecialchars($n['href']) ?>"><?= htmlspecialchars($n['label']) ?></a></li>
+                      <a href="<?= htmlspecialchars($n['href']) ?>"><?= htmlspecialchars($n['label']) ?></a>
                     <?php endforeach; ?>
-                  </ul>
+                  </div>
                 </div>
               <?php endforeach; ?>
               <div class="nav-megamenu-col">
                 <span class="col-heading">Other Areas</span>
-                <ul>
+                <div class="nav-megamenu-links">
                   <?php foreach ($otherCityGuideLinks as $item): ?>
-                    <li><a href="<?= htmlspecialchars($item['href']) ?>"><?= htmlspecialchars($item['label']) ?></a></li>
+                    <a href="<?= htmlspecialchars($item['href']) ?>"><?= htmlspecialchars($item['label']) ?></a>
                   <?php endforeach; ?>
-                </ul>
+                </div>
               </div>
             </div>
           </div>
