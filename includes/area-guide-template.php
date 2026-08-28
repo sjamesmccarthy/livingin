@@ -122,7 +122,7 @@ if (!empty($data['faqs'])) {
               <li><a href="<?= htmlspecialchars(city_guide_href($area['slug'])) ?>" style="text-decoration:underline;"><?= htmlspecialchars($area['name']) ?> Real Estate</a></li>
             <?php endforeach; ?>
           </ul>
-          <p><a href="<?= htmlspecialchars(main_site_href('/northern-nevada-city-guides')) ?>" style="text-decoration:underline;">See all Northern Nevada city guides</a></p>
+          <p><a href="<?= htmlspecialchars(hub_href()) ?>" style="text-decoration:underline;">See all Northern Nevada city guides</a></p>
         </div>
 
         <?php if (!empty($data['faqs'])): ?>

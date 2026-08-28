@@ -28,6 +28,14 @@ function main_site_href(string $path): string
     return rtrim(MAIN_SITE_URL, '/') . $path;
 }
 
+// Links to the Northern Nevada city guides hub (livinginnorthernnevada.com).
+// The livingin repo IS that hub, so it just links to its own root; every
+// other repo links out to the hub's domain.
+function hub_href(): string
+{
+    return defined('NORTHERN_NEVADA_HUB_URL') ? NORTHERN_NEVADA_HUB_URL . '/' : '/';
+}
+
 function city_guide_href(string $citySlug, ?string $neighborhoodSlug = null): string
 {
     global $cityDomains, $cityDomainRoots, $localCitySlugs;

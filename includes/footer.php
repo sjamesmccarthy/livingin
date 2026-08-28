@@ -78,7 +78,7 @@ $footerNavColumns = [
     [
         'heading' => 'Other Sites',
         'links' => [
-            ['label' => 'LivingInNorthernNevada.com', 'href' => main_site_href('/northern-nevada-city-guides')],
+            ['label' => 'LivingInNorthernNevada.com', 'href' => hub_href()],
             ['label' => 'LivingInRenoSparks.com', 'href' => city_guide_href('reno')],
             ['label' => 'LivingInCarsonCity.com', 'href' => city_guide_href('carson-city')],
             ['label' => 'LivingInMinden.com', 'href' => city_guide_href('minden')],

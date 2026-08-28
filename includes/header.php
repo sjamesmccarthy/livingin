@@ -143,7 +143,7 @@ $canonicalPath = $canonicalPath ?? '/';
 
       <div class="nav-dropdown">
         <span class="nav-dropdown-trigger">
-          <a href="<?= htmlspecialchars(main_site_href('/northern-nevada-city-guides')) ?>">City Guides</a><button type="button" class="caret-toggle" aria-label="Toggle City Guides menu" aria-expanded="false" onclick="this.closest('.nav-dropdown').classList.toggle('open'); this.setAttribute('aria-expanded', this.closest('.nav-dropdown').classList.contains('open'));"><svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path></svg></button>
+          <a href="<?= htmlspecialchars(hub_href()) ?>">City Guides</a><button type="button" class="caret-toggle" aria-label="Toggle City Guides menu" aria-expanded="false" onclick="this.closest('.nav-dropdown').classList.toggle('open'); this.setAttribute('aria-expanded', this.closest('.nav-dropdown').classList.contains('open'));"><svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path></svg></button>
         </span>
         <div class="nav-megamenu">
           <div class="container megamenu-container">
@@ -194,7 +194,7 @@ $canonicalPath = $canonicalPath ?? '/';
     <a href="<?= htmlspecialchars($member['href']) ?>" style="padding-left:2.25rem; font-size:0.9rem;"><?= htmlspecialchars($member['name']) ?></a>
   <?php endforeach; ?>
 
-  <a href="<?= htmlspecialchars(main_site_href('/northern-nevada-city-guides')) ?>" class="mobile-menu-label">City Guides</a>
+  <a href="<?= htmlspecialchars(hub_href()) ?>" class="mobile-menu-label">City Guides</a>
   <?php foreach ($cityGuideGroups as $group): ?>
     <div class="mobile-city"><a href="<?= htmlspecialchars($group['cityHref']) ?>"><?= htmlspecialchars($group['city']) ?></a></div>
     <?php foreach ($group['neighborhoods'] as $n): ?>
