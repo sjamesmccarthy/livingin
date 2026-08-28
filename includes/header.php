@@ -121,7 +121,7 @@ $canonicalPath = $canonicalPath ?? '/';
 
       <div class="nav-dropdown">
         <span class="nav-dropdown-trigger">
-          <a href="<?= htmlspecialchars(main_site_href('/about-mccarthy-group')) ?>">Meet The Team</a><svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path></svg>
+          <a href="<?= htmlspecialchars(main_site_href('/about-mccarthy-group')) ?>">Meet The Team</a><button type="button" class="caret-toggle" aria-label="Toggle Meet The Team menu" aria-expanded="false" onclick="this.closest('.nav-dropdown').classList.toggle('open'); this.setAttribute('aria-expanded', this.closest('.nav-dropdown').classList.contains('open'));"><svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path></svg></button>
         </span>
         <div class="team-megamenu">
           <div class="container">
@@ -143,7 +143,7 @@ $canonicalPath = $canonicalPath ?? '/';
 
       <div class="nav-dropdown">
         <span class="nav-dropdown-trigger">
-          <a href="<?= htmlspecialchars(main_site_href('/northern-nevada-city-guides')) ?>">City Guides</a><svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path></svg>
+          <a href="<?= htmlspecialchars(main_site_href('/northern-nevada-city-guides')) ?>">City Guides</a><button type="button" class="caret-toggle" aria-label="Toggle City Guides menu" aria-expanded="false" onclick="this.closest('.nav-dropdown').classList.toggle('open'); this.setAttribute('aria-expanded', this.closest('.nav-dropdown').classList.contains('open'));"><svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path></svg></button>
         </span>
         <div class="nav-megamenu">
           <div class="container megamenu-container">
@@ -210,4 +210,31 @@ $canonicalPath = $canonicalPath ?? '/';
   <a href="<?= htmlspecialchars(main_site_href('/reviews')) ?>">Reviews</a>
   <a href="<?= htmlspecialchars(main_site_href('/financing')) ?>">Finance</a>
 </div>
+
+<script>
+(function () {
+  function closeAllDropdowns(except) {
+    document.querySelectorAll('.nav-dropdown.open').forEach(function (dropdown) {
+      if (dropdown === except) return;
+      dropdown.classList.remove('open');
+      var toggle = dropdown.querySelector('.caret-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    var openDropdown = e.target.closest('.nav-dropdown.open');
+    var clickedToggle = e.target.closest('.caret-toggle');
+    if (clickedToggle) {
+      closeAllDropdowns(clickedToggle.closest('.nav-dropdown'));
+      return;
+    }
+    if (!openDropdown) closeAllDropdowns();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAllDropdowns();
+  });
+})();
+</script>
 

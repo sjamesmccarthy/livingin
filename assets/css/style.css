@@ -206,21 +206,30 @@ a {
   align-items: center;
 }
 
+.caret-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: -4px;
+  cursor: pointer;
+}
+
 .nav-dropdown-trigger svg.caret {
   display: inline-flex;
   color: var(--brand-text);
   fill: currentColor;
   width: 20px;
   height: 20px;
-  margin-left: -4px;
   padding: 5px;
   box-sizing: content-box;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.nav-dropdown:hover .nav-dropdown-trigger .caret,
-.nav-dropdown:focus-within .nav-dropdown-trigger .caret {
+.nav-dropdown.open .nav-dropdown-trigger .caret {
   color: var(--brand-gold);
+  transform: rotate(180deg);
 }
 
 .nav-megamenu {
@@ -236,8 +245,7 @@ a {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
-.nav-dropdown:hover .nav-megamenu,
-.nav-dropdown:focus-within .nav-megamenu {
+.nav-dropdown.open .nav-megamenu {
   display: block;
 }
 
@@ -291,7 +299,7 @@ a {
   display: block;
   color: var(--brand-text);
   font-size: 0.85rem;
-  line-height: 1.0;
+  line-height: 1.5;
   text-decoration: none;
   padding: 0.35rem 0.5rem;
   margin: 0 -0.5rem;
@@ -317,8 +325,7 @@ a {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
-.nav-dropdown:hover .team-megamenu,
-.nav-dropdown:focus-within .team-megamenu {
+.nav-dropdown.open .team-megamenu {
   display: block;
 }
 
