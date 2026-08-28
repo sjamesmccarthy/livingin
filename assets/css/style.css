@@ -220,10 +220,8 @@ a {
 
 .nav-megamenu {
   display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  left: 0;
   width: 100vw;
   z-index: 1300;
   background: rgba(15, 28, 46, 0.98);
@@ -303,10 +301,8 @@ a {
 /* Team dropdown */
 .team-megamenu {
   display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  left: 0;
   width: 100vw;
   z-index: 1300;
   background: rgba(15, 28, 46, 0.98);
