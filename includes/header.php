@@ -146,7 +146,7 @@ $canonicalPath = $canonicalPath ?? '/';
           <a href="<?= htmlspecialchars(main_site_href('/northern-nevada-city-guides')) ?>">City Guides</a><svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path></svg>
         </span>
         <div class="nav-megamenu">
-          <div class="container">
+          <div class="container megamenu-container">
             <div class="nav-megamenu-grid city-guides-grid">
               <?php foreach ($cityGuideGroups as $group): ?>
                 <div class="nav-megamenu-col">
