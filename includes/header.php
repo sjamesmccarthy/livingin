@@ -81,8 +81,8 @@ $otherCityGuideLinks = [
 ];
 
 $teamMembers = [
-    ['name' => 'James McCarthy', 'href' => main_site_href('/james-mccarthy'), 'image' => '/assets/images/bio-james.jpg', 'phone' => '(775) 495-7061', 'email' => 'jmccarthy@dicksonrealty.com'],
-    ['name' => 'Michele McCarthy', 'href' => main_site_href('/michele-mccarthy'), 'image' => '/assets/images/bio-michele.jpg', 'phone' => '(775) 622-6061', 'email' => 'mmccarthy@dicksonrealty.com'],
+    ['name' => 'James McCarthy', 'href' => main_site_href('/james-mccarthy'), 'image' => main_site_href('/bio-james.jpg'), 'phone' => '(775) 495-7061', 'email' => 'jmccarthy@dicksonrealty.com'],
+    ['name' => 'Michele McCarthy', 'href' => main_site_href('/michele-mccarthy'), 'image' => main_site_href('/bio-michele.jpg'), 'phone' => '(775) 622-6061', 'email' => 'mmccarthy@dicksonrealty.com'],
 ];
 
 $pageTitle = $pageTitle ?? 'Northern Nevada City Guides | The McCarthy Group';
@@ -98,6 +98,7 @@ $canonicalPath = $canonicalPath ?? '/';
 <meta name="description" content="<?= htmlspecialchars($pageDescription) ?>">
 <link rel="canonical" href="<?= htmlspecialchars(SITE_URL . $canonicalPath) ?>">
 <meta name="robots" content="index, follow">
+<link rel="icon" href="<?= htmlspecialchars(main_site_href('/favicon.ico')) ?>">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>

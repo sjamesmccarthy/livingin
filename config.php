@@ -1,7 +1,7 @@
 <?php
 
 define('GOOGLE_MAPS_KEY', getenv('GOOGLE_MAPS_KEY') ?: 'AIzaSyASLw97pVdtt25GHtSBmVwwRdbrzsF-_y0');
-define('SITE_URL', 'http://127.0.0.1:8001');
+define('SITE_URL', getenv('SITE_URL') ?: 'http://127.0.0.1:8001');
 define('AGENT_ENCODED_ID', 'QWdlbnQtMjgwNDEw');
 define('MAIN_SITE_URL', 'https://mccarthygrouprealty.com');
 
