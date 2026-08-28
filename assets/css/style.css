@@ -257,13 +257,13 @@ a {
 
 @media (min-width: 600px) {
   .nav-megamenu-grid {
-    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
   }
 }
 
 @media (min-width: 900px) {
   .nav-megamenu-grid.city-guides-grid {
-    grid-template-columns: repeat(5, minmax(180px, 1fr));
+    grid-template-columns: repeat(5, minmax(260px, 1fr));
   }
 }
 
