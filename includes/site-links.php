@@ -18,6 +18,11 @@ $cityDomains = [
     'gardnerville' => 'https://livingingardnerville.com',
 ];
 
+// Cities whose domain serves that city's guide directly at "/" (as opposed
+// to livinginrenosparks.com, whose "/" is a combined Reno+Sparks landing
+// page and whose city guides live at "/reno" and "/sparks").
+$cityDomainRoots = ['carson-city', 'minden', 'gardnerville'];
+
 function main_site_href(string $path): string
 {
     return rtrim(MAIN_SITE_URL, '/') . $path;
@@ -25,7 +30,7 @@ function main_site_href(string $path): string
 
 function city_guide_href(string $citySlug, ?string $neighborhoodSlug = null): string
 {
-    global $cityDomains, $localCitySlugs;
+    global $cityDomains, $cityDomainRoots, $localCitySlugs;
 
     $path = '/' . $citySlug . ($neighborhoodSlug ? '/' . $neighborhoodSlug : '');
 
@@ -34,5 +39,10 @@ function city_guide_href(string $citySlug, ?string $neighborhoodSlug = null): st
     }
 
     $domain = $cityDomains[$citySlug] ?? rtrim(MAIN_SITE_URL, '/');
+
+    if (!$neighborhoodSlug && in_array($citySlug, $cityDomainRoots, true) && isset($cityDomains[$citySlug])) {
+        return rtrim($domain, '/') . '/';
+    }
+
     return rtrim($domain, '/') . $path;
 }
