@@ -2,6 +2,11 @@ RewriteEngine On
 
 RewriteRule ^northern-nevada-city-guides/?$ index.php [L]
 
+RewriteRule ^dayton/dayton-valley/?$ dayton/dayton-valley/index.php [L]
+RewriteRule ^dayton/santa-maria-ranch/?$ dayton/santa-maria-ranch/index.php [L]
+RewriteRule ^dayton/new-empire/?$ dayton/new-empire/index.php [L]
+RewriteRule ^dayton/sutro-heights/?$ dayton/sutro-heights/index.php [L]
+RewriteRule ^dayton/riverpark/?$ dayton/riverpark/index.php [L]
 RewriteRule ^dayton/?$ dayton/index.php [L]
 RewriteRule ^washoe-valley/?$ washoe-valley/index.php [L]
 RewriteRule ^incline-village/?$ incline-village/index.php [L]

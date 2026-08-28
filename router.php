@@ -10,6 +10,11 @@ $map = [
     '/northern-nevada-city-guides' => '/index.php',
 
     '/dayton' => '/dayton/index.php',
+    '/dayton/dayton-valley' => '/dayton/dayton-valley/index.php',
+    '/dayton/santa-maria-ranch' => '/dayton/santa-maria-ranch/index.php',
+    '/dayton/new-empire' => '/dayton/new-empire/index.php',
+    '/dayton/sutro-heights' => '/dayton/sutro-heights/index.php',
+    '/dayton/riverpark' => '/dayton/riverpark/index.php',
     '/washoe-valley' => '/washoe-valley/index.php',
     '/incline-village' => '/incline-village/index.php',
     '/spanish-springs' => '/spanish-springs/index.php',
