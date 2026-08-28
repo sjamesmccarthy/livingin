@@ -220,13 +220,15 @@ a {
 
 .nav-megamenu {
   display: none;
-  position: fixed;
-  top: 96px;
-  left: 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100vw;
   z-index: 1300;
   background: rgba(15, 28, 46, 0.98);
   color: var(--brand-text);
+  font-family: var(--body-font);
   padding: 2rem 0;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
@@ -301,13 +303,15 @@ a {
 /* Team dropdown */
 .team-megamenu {
   display: none;
-  position: fixed;
-  top: 96px;
-  left: 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100vw;
   z-index: 1300;
   background: rgba(15, 28, 46, 0.98);
   color: var(--brand-text);
+  font-family: var(--body-font);
   padding: 2rem 0;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
@@ -319,9 +323,10 @@ a {
 
 .team-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(220px, 320px);
   gap: 1rem;
   justify-content: center;
+  width: 100%;
 }
 
 @media (min-width: 600px) {
