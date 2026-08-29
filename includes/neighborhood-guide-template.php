@@ -27,7 +27,7 @@ if (!empty($data['faqs'])) {
 
 <div class="header-band">
   <div class="container">
-    <p style="opacity:0.8; margin:0 0 0.75rem;"><a href="<?= htmlspecialchars(city_guide_href($data['citySlug'])) ?>" style="color:#fff; text-decoration:underline;"><?= htmlspecialchars($data['cityName']) ?> Real Estate</a></p>
+    <p class="back-to-city-link"><a href="<?= htmlspecialchars(city_guide_href($data['citySlug'])) ?>"><?= htmlspecialchars($data['cityName']) ?> Real Estate</a></p>
     <h1><?= htmlspecialchars($data['title']) ?></h1>
     <p><?= htmlspecialchars($data['intro']) ?></p>
   </div>

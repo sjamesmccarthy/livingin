@@ -107,6 +107,15 @@ a {
   min-height: 64px;
 }
 
+@media (min-width: 900px) {
+  .site-header .container {
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
 .site-header .logos {
   display: flex;
   align-items: center;
@@ -163,6 +172,8 @@ a {
 @media (min-width: 900px) {
   .site-nav {
     display: flex;
+    justify-content: center;
+    margin-top: 0.25rem;
   }
 }
 
@@ -505,6 +516,20 @@ a {
   opacity: 0.9;
   margin: 0 auto;
   max-width: 46rem;
+}
+
+.back-to-city-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  opacity: 0.8;
+  margin: 0 0 0.75rem;
+  max-width: none;
+}
+
+.back-to-city-link a {
+  color: #fff;
+  text-decoration: underline;
 }
 
 @media (min-width: 900px) {
