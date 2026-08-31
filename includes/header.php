@@ -172,7 +172,7 @@ $canonicalPath = $canonicalPath ?? '/';
       </div>
 
       <a href="<?= htmlspecialchars(main_site_href('/#home-valuation')) ?>">Home Valuation</a>
-      <a href="<?= htmlspecialchars(main_site_href('/#blog')) ?>">Blog</a>
+      <a href="<?= htmlspecialchars(main_site_href('/blog')) ?>">Blog</a>
       <a href="<?= htmlspecialchars(main_site_href('/reviews')) ?>">Reviews</a>
       <a href="<?= htmlspecialchars(main_site_href('/financing')) ?>">Finance</a>
     </nav>
@@ -206,7 +206,7 @@ $canonicalPath = $canonicalPath ?? '/';
   <?php endforeach; ?>
 
   <a href="<?= htmlspecialchars(main_site_href('/#home-valuation')) ?>">Home Valuation</a>
-  <a href="<?= htmlspecialchars(main_site_href('/#blog')) ?>">Blog</a>
+  <a href="<?= htmlspecialchars(main_site_href('/blog')) ?>">Blog</a>
   <a href="<?= htmlspecialchars(main_site_href('/reviews')) ?>">Reviews</a>
   <a href="<?= htmlspecialchars(main_site_href('/financing')) ?>">Finance</a>
 </div>

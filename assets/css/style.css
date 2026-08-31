@@ -103,7 +103,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.5rem;
   min-height: 64px;
 }
 
@@ -135,10 +135,9 @@ a {
 }
 
 .site-header .logos .mccarthy-logo {
-  height: 36px;
-  width: 32px;
+  height: 54.5px;
+  width: 48px;
   object-fit: contain;
-  border-radius: 4px;
 }
 
 .site-header .logos .brand-name {
@@ -157,8 +156,8 @@ a {
 }
 
 .site-header .logos .dickson-logo {
-  height: 46px;
-  width: 128px;
+  height: 49.95px;
+  width: 140px;
   object-fit: contain;
 }
 
