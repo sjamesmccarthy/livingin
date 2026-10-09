@@ -107,9 +107,9 @@ $footerYear = date('Y');
 
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="/assets/images/mccarthy-group-logo-2048-gold.jpg" alt="The McCarthy Group">
+        <img src="/assets/images/mccarthy-group-logo-2048-gold.jpg" alt="McCarthy Group">
         <div>
-          <p class="name">The McCarthy Group</p>
+          <p class="name">McCarthy Group</p>
           <p class="brokerage">Dickson Realty</p>
           <p class="address">308 N Curry St Ste 202<br>Carson City, NV 89703</p>
           <a class="phone" href="tel:+17758826300">(775) 882-6300</a>
@@ -150,7 +150,7 @@ $footerYear = date('Y');
     <div class="footer-legal">
       <div>
         <p>Information deemed reliable but not guaranteed. Equal Housing Opportunity.</p>
-        <p>Copyright <?= htmlspecialchars($footerYear) ?> The McCarthy Group LLC at Dickson Realty. All rights reserved. <a href="<?= htmlspecialchars(main_site_href('/privacy')) ?>">Privacy Policy</a> | <a href="<?= htmlspecialchars(main_site_href('/terms')) ?>">Terms</a></p>
+        <p>Copyright <?= htmlspecialchars($footerYear) ?> McCarthy Group LLC at Dickson Realty. All rights reserved. <a href="<?= htmlspecialchars(main_site_href('/privacy')) ?>">Privacy Policy</a> | <a href="<?= htmlspecialchars(main_site_href('/terms')) ?>">Terms</a></p>
         <p class="powered-by">powered by <a href="https://leadlattecrm.com" target="_blank" rel="noopener noreferrer">Lead <svg class="icon-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10" /><path d="M10 20c5.5-2.5.8-6.4 3-10" /><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z" /><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z" /></svg> Latte</a></p>
       </div>
       <div class="footer-mls">

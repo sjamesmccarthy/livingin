@@ -85,8 +85,8 @@ $teamMembers = [
     ['name' => 'Michele McCarthy', 'href' => main_site_href('/michele-mccarthy'), 'image' => main_site_href('/bio-michele.jpg'), 'phone' => '(775) 622-6061', 'email' => 'mmccarthy@dicksonrealty.com'],
 ];
 
-$pageTitle = $pageTitle ?? 'Northern Nevada City Guides | The McCarthy Group';
-$pageDescription = $pageDescription ?? 'Explore Northern Nevada city guides with The McCarthy Group at Dickson Realty.';
+$pageTitle = $pageTitle ?? 'Northern Nevada City Guides | McCarthy Group';
+$pageDescription = $pageDescription ?? 'Explore Northern Nevada city guides with McCarthy Group at Dickson Realty.';
 $canonicalPath = $canonicalPath ?? '/';
 ?>
 <!doctype html>
@@ -106,8 +106,8 @@ $canonicalPath = $canonicalPath ?? '/';
   <div class="container">
     <div class="logos">
       <a class="brand" href="<?= htmlspecialchars(main_site_href('/')) ?>">
-        <img class="mccarthy-logo" src="/assets/images/mccarthy-group-logo-2048-gold.jpg" alt="The McCarthy Group">
-        <span class="brand-name">The McCarthy Group</span>
+        <img class="mccarthy-logo" src="/assets/images/mccarthy-group-logo-2048-gold.jpg" alt="McCarthy Group">
+        <span class="brand-name">McCarthy Group</span>
       </a>
       <div class="divider"></div>
       <a href="<?= htmlspecialchars(main_site_href('/')) ?>">

@@ -77,7 +77,7 @@ if (!empty($data['faqs'])) {
         <?php if (!empty($siblingNeighborhoods)): ?>
           <div id="other-neighborhoods" class="guide-section">
             <h2>Other Neighborhoods in <?= htmlspecialchars($data['cityName']) ?></h2>
-            <p>The McCarthy Group also covers these <?= htmlspecialchars($data['cityName']) ?> neighborhoods:</p>
+            <p>McCarthy Group also covers these <?= htmlspecialchars($data['cityName']) ?> neighborhoods:</p>
             <ul style="display:flex; flex-wrap:wrap; gap:0 1.5rem;">
               <?php foreach ($siblingNeighborhoods as $n): ?>
                 <li><a href="<?= htmlspecialchars(city_guide_href($data['citySlug'], $n['slug'])) ?>" style="text-decoration:underline;"><?= htmlspecialchars($n['name']) ?></a></li>
@@ -103,7 +103,7 @@ if (!empty($data['faqs'])) {
             <?php endforeach; ?>
             <p>Have a question about <?= htmlspecialchars($data['title']) ?> that isn't covered here?
               <a href="<?= htmlspecialchars(main_site_href('/#hero-search')) ?>">Search current listings</a> or
-              <a href="<?= htmlspecialchars(main_site_href('/#home-valuation')) ?>">get a home valuation</a> to talk with The McCarthy Group directly.
+              <a href="<?= htmlspecialchars(main_site_href('/#home-valuation')) ?>">get a home valuation</a> to talk with McCarthy Group directly.
             </p>
           </div>
         <?php endif; ?>

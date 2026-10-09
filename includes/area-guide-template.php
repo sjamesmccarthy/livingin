@@ -116,7 +116,7 @@ if (!empty($data['faqs'])) {
 
         <div id="nearby-areas" class="guide-section">
           <h2>Nearby Areas</h2>
-          <p>The McCarthy Group also serves these nearby Northern Nevada communities:</p>
+          <p>McCarthy Group also serves these nearby Northern Nevada communities:</p>
           <ul style="display:flex; flex-wrap:wrap; gap:0 1.5rem;">
             <?php foreach ($nearbyAreas as $area): ?>
               <li><a href="<?= htmlspecialchars(city_guide_href($area['slug'])) ?>" style="text-decoration:underline;"><?= htmlspecialchars($area['name']) ?> Real Estate</a></li>
@@ -141,7 +141,7 @@ if (!empty($data['faqs'])) {
             <?php endforeach; ?>
             <p>Have a question about <?= htmlspecialchars($cityName) ?> that isn't covered here?
               <a href="<?= htmlspecialchars(main_site_href('/#hero-search')) ?>">Search current listings</a> or
-              <a href="<?= htmlspecialchars(main_site_href('/#home-valuation')) ?>">get a home valuation</a> to talk with The McCarthy Group directly.
+              <a href="<?= htmlspecialchars(main_site_href('/#home-valuation')) ?>">get a home valuation</a> to talk with McCarthy Group directly.
             </p>
           </div>
         <?php endif; ?>

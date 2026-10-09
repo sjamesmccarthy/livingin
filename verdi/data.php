@@ -115,7 +115,7 @@ return [
         ],
         [
             'question' => 'Who are the public utilities in Verdi, Nevada?',
-            'answer' => "Utility providers in Verdi vary by service type and location, covering electric, water, sewer, gas, and trash. The McCarthy Group maintains a current list of public utility contacts for the area.",
+            'answer' => "Utility providers in Verdi vary by service type and location, covering electric, water, sewer, gas, and trash. McCarthy Group maintains a current list of public utility contacts for the area.",
             'linkHref' => 'https://mccarthygrouprealty.com/vendors/shared/jmccarthy-dicksonrealty/utilities',
             'linkText' => 'View public utilities for Verdi',
         ],
