@@ -271,9 +271,19 @@ a {
   }
 }
 
+/* minmax(0, 1fr) lets columns shrink with the viewport; a fixed 260px
+   minimum made five columns overflow and clip off the left edge. */
 @media (min-width: 900px) {
   .nav-megamenu-grid.city-guides-grid {
-    grid-template-columns: repeat(5, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-megamenu-grid.city-guides-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2rem;
   }
 }
 
