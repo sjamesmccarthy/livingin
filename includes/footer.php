@@ -151,7 +151,7 @@ $footerYear = date('Y');
       <div>
         <p>Information deemed reliable but not guaranteed. Equal Housing Opportunity.</p>
         <p>Copyright <?= htmlspecialchars($footerYear) ?> McCarthy Group LLC at Dickson Realty. All rights reserved. <a href="<?= htmlspecialchars(main_site_href('/privacy')) ?>">Privacy Policy</a> | <a href="<?= htmlspecialchars(main_site_href('/terms')) ?>">Terms</a></p>
-        <p class="powered-by">powered by <a href="https://leadlattecrm.com" target="_blank" rel="noopener noreferrer">Lead <svg class="icon-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10" /><path d="M10 20c5.5-2.5.8-6.4 3-10" /><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z" /><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z" /></svg> Latte</a></p>
+        <p class="powered-by">Designed by the <button type="button" class="pink-goat-btn" aria-label="Pink Goat"><span>Pink Goat</span><img src="/assets/images/pink-goat-logo.png" alt="" aria-hidden="true"></button></p>
       </div>
       <div class="footer-mls">
         <img src="/assets/images/relator-mls-logo.png" alt="Realtor and MLS logos">
@@ -160,5 +160,6 @@ $footerYear = date('Y');
 
   </div>
 </footer>
+<script src="/assets/js/pink-goat.js" defer></script>
 </body>
 </html>
