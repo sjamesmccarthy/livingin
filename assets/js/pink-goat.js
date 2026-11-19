@@ -54,6 +54,55 @@
     document.head.appendChild(link);
   }
 
+  // Finale: once the goat is off screen, a big angled pink banner pops in, types
+  // out the domain, holds ~2.5s, then dissolves.
+  function showBanner() {
+    var el = mk(
+      "div",
+      "position:fixed;left:50%;top:50%;z-index:100001;pointer-events:none;white-space:nowrap;" +
+        "padding:.35em .7em;background:#f9559d;color:#fff;" +
+        "font:800 clamp(1.1rem,6vw,4.5rem)/1.1 ui-monospace,'SF Mono',Menlo,Consolas,monospace;" +
+        "letter-spacing:-.02em;box-shadow:0 10px 30px rgba(17,24,39,.25);opacity:0;" +
+        "transform:translate(-50%,-50%) rotate(-4deg)",
+      document.body
+    );
+    el.setAttribute("aria-hidden", "true");
+    var text = mk("span", "", el);
+    var cursor = mk("span", "display:inline-block;width:.5em;height:1em;margin-left:.05em;background:#fff;vertical-align:-.12em", el);
+    var blink = cursor.animate([{ opacity: 1 }, { opacity: 1, offset: 0.5 }, { opacity: 0, offset: 0.5 }, { opacity: 0 }], {
+      duration: 600,
+      iterations: Infinity,
+    });
+    var base = "translate(-50%,-50%) ";
+    function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+    var p = el
+      .animate(
+        [
+          { transform: base + "rotate(-12deg) scale(.2)", opacity: 0 },
+          { transform: base + "rotate(-2deg) scale(1.08)", opacity: 1, offset: 0.7 },
+          { transform: base + "rotate(-4deg) scale(1)", opacity: 1 },
+        ],
+        { duration: 450, easing: "cubic-bezier(.2,.8,.3,1)", fill: "forwards" }
+      )
+      .finished;
+    CAUGHT_LINK.split("").forEach(function (ch) {
+      p = p.then(function () { text.textContent += ch; return sleep(45); });
+    });
+    function cleanup() { blink.cancel(); el.remove(); }
+    return p
+      .then(function () { return sleep(2500); })
+      .then(function () {
+        return el.animate(
+          [
+            { transform: base + "rotate(-4deg) scale(1)", opacity: 1, filter: "blur(0)" },
+            { transform: base + "rotate(-3deg) scale(1.06)", opacity: 0, filter: "blur(10px)" },
+          ],
+          { duration: 900, easing: "ease-in", fill: "forwards" }
+        ).finished;
+      })
+      .then(cleanup, cleanup);
+  }
+
   function makeCaughtPrefix() {
     var h = new Date().getHours();
     var timeOfDay = h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
@@ -345,7 +394,8 @@
 
     // Runs the stages in order; if she is caught, resumes where she left off.
     function run(stage) {
-      if (stage >= stages.length || cancelled) return Promise.resolve();
+      if (cancelled) return Promise.resolve(false);
+      if (stage >= stages.length) return Promise.resolve(true); // goat made it off screen
       return stages[stage]().then(
         function () { return run(stage + 1); },
         function () {
@@ -356,7 +406,9 @@
     }
 
     requestAnimationFrame(function () {
-      run(0).then(finish, finish);
+      run(0)
+        .then(function (done) { return done ? showBanner() : null; })
+        .then(finish, finish);
     });
   }
 
