@@ -14,6 +14,27 @@
   window.__pinkGoatLoaded = true;
 
   var GOAT_WIDTH = 190;
+  var GOAT_WIDTH_SMALL = 120;
+  var PHONE_MAX = 640;
+  var phoneBox = null; // set per bubble on phones: { left, width, tail }
+
+  var LOOK_LINES = [
+    "Hey! Hey! Look at me! Watch this jump!",
+    "Eyes on me! This is my best jump yet!",
+    "Psst! Over here! Watch this!",
+    "Ready? Watch me jump!",
+    "Look look look! Here comes a big one!",
+    "Hey, you! Yes, you! Check this out!",
+  ];
+  var CHEW_LINES = [
+    "Is that edible? I\u2019m going to chew it. Yep, definitely edible.",
+    "Mmm, what\u2019s this? Chewing it. Tastes like victory.",
+    "Is this food? Only one way to find out\u2026 nom nom.",
+    "I\u2019m just going to nibble this a little. For science.",
+    "That looks tasty. Chomp chomp. Yep, delicious.",
+    "Don\u2019t mind me, just snacking. Totally edible.",
+  ];
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
   var EDGE_GAP = 12;
   var WALK_SPEED = 0.16; // px per ms
   var GLOW =
@@ -122,9 +143,13 @@
   function buildBubble(parent, text, link) {
     var b = mk(
       "div",
-      "position:absolute;bottom:100%;right:0;margin-bottom:2rem;box-sizing:border-box;" +
-        "width:26rem;max-width:85vw;padding:1rem 1.25rem;text-align:left;font-weight:500;" +
-        "font-size:1.875rem;line-height:1.25;font-family:" + BUBBLE_FONT + ";color:" + PINK + ";" +
+      (phoneBox
+        ? "position:absolute;bottom:100%;left:" + phoneBox.left + "px;margin-bottom:1.5rem;box-sizing:border-box;" +
+          "width:" + phoneBox.width + "px;padding:.75rem 1rem;text-align:left;font-weight:500;" +
+          "font-size:1.125rem;line-height:1.25;"
+        : "position:absolute;bottom:100%;right:0;margin-bottom:2rem;box-sizing:border-box;" +
+          "width:26rem;max-width:85vw;padding:1rem 1.25rem;text-align:left;font-weight:500;" +
+          "font-size:1.875rem;line-height:1.25;") + "font-family:" + BUBBLE_FONT + ";color:" + PINK + ";" +
         "background:#fff;border:4px solid " + INK + ";box-shadow:0 6px 18px rgba(17,24,39,0.18);" +
         "border-radius:26px 30px 24px 32px / 30px 24px 32px 26px;transform:rotate(-1deg);" +
         "pointer-events:auto;cursor:pointer",
@@ -135,7 +160,7 @@
       var a = mk("span", "color:" + PINK + ";text-decoration:underline", b);
       a.textContent = link;
     }
-    var tail = mk("span", "position:absolute;top:calc(100% - 2px);right:44px", b);
+    var tail = mk("span", "position:absolute;top:calc(100% - 2px);" + (phoneBox ? "left:" + phoneBox.tail + "px" : "right:44px"), b);
     tail.innerHTML =
       '<svg width="40" height="34" viewBox="0 0 40 34" aria-hidden="true" style="overflow:visible;display:block">' +
       '<path d="' + TAIL_FILL + '" fill="#fff"/>' +
@@ -156,6 +181,7 @@
     if (running) return;
     running = true;
     loadFont();
+    GOAT_WIDTH = window.innerWidth < PHONE_MAX ? GOAT_WIDTH_SMALL : 190;
     btn.disabled = true;
     var logo = btn.querySelector("img");
     var logoSrc = logo ? logo.getAttribute("src") : "/assets/images/pink-goat-logo.png";
@@ -190,6 +216,16 @@
 
     function showBubble(text, link) {
       if (bubble) bubble.remove();
+      var vwNow = window.innerWidth;
+      if (vwNow < PHONE_MAX) {
+        var w = Math.min(vwNow - 24, 360);
+        var gx = currentX();
+        var leftVp = Math.max(12, Math.min(gx + GOAT_WIDTH / 2 - w / 2, vwNow - 12 - w));
+        var tail = Math.max(16, Math.min(gx + GOAT_WIDTH / 2 - leftVp - 20, w - 56));
+        phoneBox = { left: Math.round(leftVp - gx), width: w, tail: Math.round(tail) };
+      } else {
+        phoneBox = null;
+      }
       bubble = buildBubble(outer, text, link);
       return bubble;
     }
@@ -294,7 +330,7 @@
         [
           { transform: "translate3d(0,0,0) scale(1,1)", easing: "ease-out" },
           { transform: "translate3d(0,0,0) scale(1.08,0.9)", offset: 0.15, easing: "cubic-bezier(0.2,0.7,0.3,1)" },
-          { transform: "translate3d(0,-160px,0) rotate(-8deg) scale(0.96,1.06)", offset: 0.5, easing: "cubic-bezier(0.7,0,0.8,0.3)" },
+          { transform: "translate3d(0,-" + (window.innerWidth < PHONE_MAX ? 110 : 160) + "px,0) rotate(-8deg) scale(0.96,1.06)", offset: 0.5, easing: "cubic-bezier(0.7,0,0.8,0.3)" },
           { transform: "translate3d(0,0,0) scale(1.1,0.88)", offset: 0.85, easing: "ease-out" },
           { transform: "translate3d(0,0,0) scale(1,1)" },
         ],
@@ -329,12 +365,14 @@
     var middle = vw / 2 - GOAT_WIDTH / 2;
     var rightEdge = vw - GOAT_WIDTH - EDGE_GAP;
 
+    var lookLine = pick(LOOK_LINES);
+    var chewLine = pick(CHEW_LINES);
     var stages = [
       // Left edge to the middle.
       function () { return walkTo(currentX(), middle, "cubic-bezier(0.25, 0.1, 0.3, 1)"); },
       // Look-at-me jump.
       function () {
-        showBubble("Hey! Hey! Look at me! Watch this jump!");
+        showBubble(lookLine);
         return wait(3500)
           .then(function () { return jumpAnim().finished; })
           .then(function () { return wait(800); })
@@ -344,7 +382,7 @@
       function () { return walkTo(currentX(), rightEdge, "ease-in-out"); },
       // Chewing.
       function () {
-        showBubble("Is that edible? I’m going to chew it. Yep, definitely edible.");
+        showBubble(chewLine);
         return wait(5000).then(hideBubble);
       },
       // Off the screen.

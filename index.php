@@ -2,7 +2,7 @@
 
 $pageTitle = 'Northern Nevada City Guides | McCarthy Group';
 $pageDescription = 'James and Michele McCarthy of McCarthy Group at Dickson Realty serve buyers and sellers across Northern Nevada. Pick a community for neighborhood-level pricing, lifestyle, and buying guidance.';
-$canonicalPath = '/northern-nevada-city-guides';
+$canonicalPath = '/';
 
 require __DIR__ . '/includes/header.php';
 
