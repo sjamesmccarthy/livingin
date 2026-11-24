@@ -90,4 +90,24 @@ Disallow: /
 User-agent: LinkedInBot
 Disallow: /
 
+User-agent: BingPreview
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
+
+User-agent: MicrosoftPreview
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
+
+User-agent: meta-webindexer
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
+
+User-agent: meta-externalagent
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
+
+User-agent: meta-externalfetcher
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
+
 Sitemap: https://livinginnorthernnevada.com/sitemap.xml
