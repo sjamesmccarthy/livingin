@@ -81,4 +81,13 @@ User-agent: CCBot
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
+User-agent: facebookexternalhit
+Disallow: /
+
+User-agent: Twitterbot
+Disallow: /
+
+User-agent: LinkedInBot
+Disallow: /
+
 Sitemap: https://livinginnorthernnevada.com/sitemap.xml
