@@ -1,5 +1,14 @@
 RewriteEngine On
 
+# --- Security: never serve hidden files/dirs (.git, .env, ...), dumps, backups,
+# --- or source/config files. Added after probes for /.git/HEAD, /.env, *.sql, etc.
+RewriteRule (^|/)\.(?!well-known(/|$)) - [F,L]
+RewriteRule \.(sql|bak|old|swp|log|zip|tar|gz|tgz)$ - [F,L]
+RewriteRule ^(includes|scss|node_modules)/ - [F,L]
+RewriteRule ^(config|router)\.php$ - [F,L]
+RewriteRule ^(package(-lock)?\.json|composer\.(json|lock)|README\.md|dev\.sh|serve\.sh)$ - [F,L]
+
+
 RewriteRule ^northern-nevada-city-guides/?$ index.php [L]
 
 RewriteRule ^dayton/dayton-valley/?$ dayton/dayton-valley/index.php [L]
