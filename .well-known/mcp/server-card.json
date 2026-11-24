@@ -1,0 +1,12 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/mcp-server-card/v1.json",
+  "name": "com.livinginnorthernnevada/guides",
+  "title": "Living in Northern Nevada city guides",
+  "description": "Read-only information about Northern Nevada city guides and McCarthy Group contact details.",
+  "version": "1.0.0",
+  "websiteUrl": "https://livinginnorthernnevada.com",
+  "remotes": [
+    { "type": "streamable-http", "url": "https://livinginnorthernnevada.com/mcp" }
+  ],
+  "capabilities": { "tools": { "listChanged": false } }
+}

@@ -8,6 +8,20 @@ RewriteRule ^(includes|scss|node_modules)/ - [F,L]
 RewriteRule ^(config|router)\.php$ - [F,L]
 RewriteRule ^(package(-lock)?\.json|composer\.(json|lock)|README\.md|dev\.sh|serve\.sh)$ - [F,L]
 
+# Agent endpoints
+RewriteRule ^mcp/?$ mcp.php [L]
+
+# Markdown representation for clients sending Accept: text/markdown
+RewriteCond %{HTTP:Accept} text/markdown
+RewriteCond %{HTTP:X-MD-Internal} ^$
+RewriteCond %{REQUEST_URI} !^/(assets|includes|\.well-known|mcp)
+RewriteCond %{REQUEST_URI} !\.(txt|xml|json|php)$
+RewriteRule ^(.*)$ md.php?path=$1 [L,QSA]
+
+# Tell caches the response varies by Accept
+<IfModule mod_headers.c>
+  Header append Vary Accept
+</IfModule>
 
 RewriteRule ^northern-nevada-city-guides/?$ index.php [L]
 

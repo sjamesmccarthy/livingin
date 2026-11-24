@@ -88,6 +88,53 @@ $teamMembers = [
 $pageTitle = $pageTitle ?? 'Northern Nevada City Guides | McCarthy Group';
 $pageDescription = $pageDescription ?? 'Explore Northern Nevada city guides with McCarthy Group at Dickson Realty.';
 $canonicalPath = $canonicalPath ?? '/';
+
+header('Link: </sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/plain"', false);
+header('Vary: Accept', false);
+require_once __DIR__ . '/agent-tools.php';
+
+$orgId = 'https://mccarthygrouprealty.com/#agent';
+$jsonLd = [
+    [
+        '@context' => 'https://schema.org',
+        '@type' => ['RealEstateAgent', 'LocalBusiness'],
+        '@id' => $orgId,
+        'name' => 'James & Michele McCarthy | McCarthy Group',
+        'url' => 'https://mccarthygrouprealty.com',
+        'telephone' => '+1-775-391-0565',
+        'email' => 'mccarthygroup@mccarthygrouprealty.com',
+        'image' => 'https://mccarthygrouprealty.com/mccarthy-group-logo-2048-gold.jpg',
+        'logo' => 'https://mccarthygrouprealty.com/mccarthy-group-logo-2048-gold.jpg',
+        'address' => ['@type' => 'PostalAddress', 'streetAddress' => '308 N Curry St Ste 202', 'addressLocality' => 'Carson City', 'addressRegion' => 'NV', 'postalCode' => '89703', 'addressCountry' => 'US'],
+        'parentOrganization' => ['@type' => 'Organization', 'name' => 'Dickson Realty'],
+        'sameAs' => [
+            'https://facebook.com/REALTORsoldnevada',
+            'https://instagram.com/REALTORsoldnevada',
+            'https://tiktok.com/@soldnevada',
+            'https://youtube.com/@soldnevada',
+            'https://x.com/SoldNevada',
+            'https://mccarthygrouprealty.com',
+        ],
+    ],
+    [
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        '@id' => SITE_URL . '/#website',
+        'name' => 'Living in Northern Nevada | McCarthy Group',
+        'url' => SITE_URL,
+        'publisher' => ['@id' => $orgId],
+    ],
+    [
+        '@context' => 'https://schema.org',
+        '@type' => 'WebPage',
+        '@id' => SITE_URL . $canonicalPath . '#webpage',
+        'url' => SITE_URL . $canonicalPath,
+        'name' => $pageTitle,
+        'description' => $pageDescription,
+        'isPartOf' => ['@id' => SITE_URL . '/#website'],
+        'about' => ['@id' => $orgId],
+    ],
+];
 ?>
 <!doctype html>
 <html lang="en">
@@ -100,6 +147,28 @@ $canonicalPath = $canonicalPath ?? '/';
 <meta name="robots" content="index, follow">
 <link rel="icon" href="<?= htmlspecialchars(main_site_href('/favicon.ico')) ?>">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="alternate" type="text/markdown" href="<?= htmlspecialchars(SITE_URL . $canonicalPath) ?>" title="Markdown (send Accept: text/markdown)">
+<?php foreach ($jsonLd as $node): ?>
+<script type="application/ld+json"><?= json_encode($node, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?></script>
+<?php endforeach; ?>
+<script>
+(function () {
+  var mc = navigator.modelContext;
+  if (!mc || !mc.registerTool) return;
+  var contact = <?= json_encode(agent_contact_info(), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?>;
+  var guides = <?= json_encode(agent_city_guides(), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) ?>;
+  function res(v) { return { content: [{ type: 'text', text: JSON.stringify(v) }] }; }
+  try {
+    mc.registerTool({ name: 'get_contact_info', description: 'Get McCarthy Group phone, email and office address.', inputSchema: { type: 'object', properties: {} }, execute: function () { return Promise.resolve(res(contact)); } });
+    mc.registerTool({ name: 'list_city_guides', description: 'List Northern Nevada city guides with URLs.', inputSchema: { type: 'object', properties: {} }, execute: function () { return Promise.resolve(res({ guides: guides })); } });
+    mc.registerTool({ name: 'open_city_guide', description: 'Navigate to a Northern Nevada city guide.', inputSchema: { type: 'object', properties: { slug: { type: 'string', enum: guides.map(function (g) { return g.slug; }) } }, required: ['slug'] }, execute: function (a) {
+      var g = guides.filter(function (x) { return x.slug === (a && a.slug); })[0];
+      if (!g) return Promise.resolve(res({ error: 'Unknown guide' }));
+      window.location.assign(g.url); return Promise.resolve(res({ navigating: g.url }));
+    } });
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <header class="site-header" id="site-header">

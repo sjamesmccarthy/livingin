@@ -24,6 +24,14 @@ $map = [
     '/smith-valley' => '/smith-valley/index.php',
 ];
 
+if ($_SERVER['REQUEST_URI'] === '/mcp') { require __DIR__ . '/mcp.php'; return true; }
+if (stripos($_SERVER['HTTP_ACCEPT'] ?? '', 'text/markdown') !== false && !isset($_SERVER['HTTP_X_MD_INTERNAL'])
+    && !preg_match('#^/(assets|\.well-known|mcp)|\.(txt|xml|json)$#', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))) {
+    $_GET['path'] = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    require __DIR__ . '/md.php';
+    return true;
+}
+
 $path = rtrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $path = $path === '' ? '/' : $path;
 

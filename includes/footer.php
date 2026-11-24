@@ -150,7 +150,7 @@ $footerYear = date('Y');
     <div class="footer-legal">
       <div>
         <p>Information deemed reliable but not guaranteed. Equal Housing Opportunity.</p>
-        <p>Copyright <?= htmlspecialchars($footerYear) ?> McCarthy Group LLC at Dickson Realty. All rights reserved. <a href="<?= htmlspecialchars(main_site_href('/privacy')) ?>">Privacy Policy</a> | <a href="<?= htmlspecialchars(main_site_href('/terms')) ?>">Terms</a></p>
+        <p>Copyright <?= htmlspecialchars($footerYear) ?> McCarthy Group LLC at Dickson Realty. All rights reserved. <a href="<?= htmlspecialchars(main_site_href('/privacy')) ?>">Privacy Policy</a> | <a href="<?= htmlspecialchars(main_site_href('/contact')) ?>">Contact</a> | <a href="<?= htmlspecialchars(main_site_href('/terms')) ?>">Terms</a></p>
         <p class="powered-by">Designed by the <button type="button" class="pink-goat-btn" aria-label="Pink Goat"><span>Pink Goat</span><img src="/assets/images/pink-goat-logo.png" alt="" aria-hidden="true"></button></p>
       </div>
       <div class="footer-mls">
