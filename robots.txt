@@ -37,18 +37,6 @@ User-agent: YandexBot
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
-User-agent: facebookexternalhit
-Content-Signal: search=yes, ai-input=yes, ai-train=no
-Allow: /
-
-User-agent: Twitterbot
-Content-Signal: search=yes, ai-input=yes, ai-train=no
-Allow: /
-
-User-agent: LinkedInBot
-Content-Signal: search=yes, ai-input=yes, ai-train=no
-Allow: /
-
 User-agent: GPTBot
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
